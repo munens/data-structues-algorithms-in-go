@@ -27,11 +27,6 @@ func (s *StackArray[T]) Lookup() {
 }
 
 func (s *StackArray[T]) Push(value T) error {
-	fmt.Println(cap(s.array), len(s.array), s.Size)
-	if cap(s.array) == s.Size {
-		return errors.New("stack is at capacity")
-	}
-
 	s.array = append(s.array, value)
 	s.Size += 1
 	return nil
@@ -43,7 +38,7 @@ func (s *StackArray[T]) Pop() (*T, error) {
 	}
 
 	v := &s.array[len(s.array)-1]
-	_ = s.array[:len(s.array)-1]
+	s.array = s.array[:len(s.array)-1]
 
 	s.Size -= 1
 	return v, nil
