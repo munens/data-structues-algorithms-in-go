@@ -40,7 +40,7 @@ func main() {
 	//s.Pop()
 	//s.Lookup()
 
-	s := stack.New[string](5)
+	s := stack.NewStackArray[string](5)
 	s.Push("google")
 	s.Push("udemy")
 

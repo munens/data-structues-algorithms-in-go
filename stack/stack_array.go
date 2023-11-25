@@ -11,7 +11,7 @@ type StackArray[T interface{}] struct {
 	array []T
 }
 
-func New[T interface{}](size int) *StackArray[T] {
+func NewStackArray[T interface{}](size int) *StackArray[T] {
 	return &StackArray[T]{
 		Size:  0,
 		array: make([]T, size),
