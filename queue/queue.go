@@ -25,13 +25,14 @@ func (q *Queue[T]) Enqueue(value T) {
 	q.Size += 1
 }
 
-func (q *Queue[T]) Dequeue() error {
+func (q *Queue[T]) Dequeue() (*T, error) {
+	v := &q.linkedlist.Head.Value
 	if err := q.linkedlist.RemoveByIndex(0); err != nil {
-		return err
+		return nil, err
 	}
 
 	q.Size -= 1
-	return nil
+	return v, nil
 }
 
 func (q *Queue[T]) Peak() error {
