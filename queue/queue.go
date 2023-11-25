@@ -35,7 +35,7 @@ func (q *Queue[T]) Dequeue() (*T, error) {
 	return v, nil
 }
 
-func (q *Queue[T]) Peak() error {
+func (q *Queue[T]) Peek() error {
 	if q.linkedlist.Size == 0 {
 		return errors.New("queue has no items")
 	}

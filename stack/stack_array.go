@@ -3,6 +3,7 @@ package stack
 import (
 	"errors"
 	"fmt"
+	"reflect"
 )
 
 type StackArray[T interface{}] struct {
@@ -12,23 +13,26 @@ type StackArray[T interface{}] struct {
 
 func New[T interface{}](size int) *StackArray[T] {
 	return &StackArray[T]{
-		Size:  size,
+		Size:  0,
 		array: make([]T, size),
 	}
 }
 
 func (s *StackArray[T]) Lookup() {
-	for v := range s.array {
-		fmt.Println(v)
+	for _, v := range s.array {
+		if !reflect.ValueOf(v).IsZero() {
+			fmt.Println(v)
+		}
 	}
 }
 
 func (s *StackArray[T]) Push(value T) error {
+	fmt.Println(cap(s.array), len(s.array), s.Size)
 	if cap(s.array) == s.Size {
 		return errors.New("stack is at capacity")
 	}
 
-	_ = append(s.array, value)
+	s.array = append(s.array, value)
 	s.Size += 1
 	return nil
 }
@@ -39,13 +43,13 @@ func (s *StackArray[T]) Pop() (*T, error) {
 	}
 
 	v := &s.array[len(s.array)-1]
-	s.array = s.array[:len(s.array)-1]
+	_ = s.array[:len(s.array)-1]
 
 	s.Size -= 1
 	return v, nil
 }
 
-func (s *StackArray[T]) Peak() error {
+func (s *StackArray[T]) Peek() error {
 	if s.Size == 0 {
 		return errors.New("stack has no items")
 	}

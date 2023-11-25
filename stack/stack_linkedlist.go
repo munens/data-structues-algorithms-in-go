@@ -39,7 +39,7 @@ func (s *Stack[T]) Pop() (*T, error) {
 	return v, nil
 }
 
-func (s *Stack[T]) Peak() error {
+func (s *Stack[T]) Peek() error {
 	if s.linkedlist.Size == 0 {
 		return errors.New("stack has no items")
 	}

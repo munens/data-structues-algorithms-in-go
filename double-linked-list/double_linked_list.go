@@ -31,12 +31,12 @@ func (l *DoubleLinkedList[T]) Add(value T) {
 	l.Size++
 }
 
-func (l *DoubleLinkedList[T]) insert(i int, value T) error {
+func (l *DoubleLinkedList[T]) Insert(i int, value T) error {
 	if i < 0 || i > l.Size {
 		return errors.New("index is out of range")
 	}
 
-	if l.Head == nil || i == l.Size {
+	if i == l.Size {
 		l.Add(value)
 		return nil
 	}
