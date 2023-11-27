@@ -49,6 +49,6 @@ func (s *StackArray[T]) Peek() error {
 		return errors.New("stack has no items")
 	}
 
-	fmt.Print(s.array[len(s.array)-1])
+	fmt.Println(s.array[len(s.array)-1])
 	return nil
 }

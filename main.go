@@ -1,6 +1,6 @@
 package main
 
-import "github.com/munens/data-structures-algorithms/stack"
+import "github.com/munens/data-structures-algorithms/queue"
 
 func main() {
 
@@ -40,12 +40,21 @@ func main() {
 	//s.Pop()
 	//s.Lookup()
 
-	s := stack.NewStackArray[string](5)
-	s.Push("google")
-	s.Push("udemy")
+	//s := stack.NewStackArray[string](5)
+	//s.Push("google")
+	//s.Push("udemy")
+	//
+	//s.Lookup()
+	//s.Pop()
+	//s.Lookup()
 
-	s.Lookup()
-	s.Pop()
-	s.Lookup()
+	qs := queue.NewQueueStack[string](10)
+	qs.Enqueue("jaymo")
+	qs.Enqueue("babu")
 
+	qs.Lookup()
+
+	qs.Dequeue()
+	qs.Peek()
+	qs.Lookup()
 }
