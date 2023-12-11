@@ -117,15 +117,21 @@ func (bst *BinarySearchTree[T]) Remove(v T) error {
 	}
 
 	if bst.hasNoChildren(n) {
-		bst.updateChild(n.Parent, n.Value, nil)
+		if err := bst.updateChild(n.Parent, n.Value, nil); err != nil {
+			return err
+		}
 	}
 
 	if bst.hasLeftOnly(n) {
-		bst.updateChild(n.Parent, n.Value, n.Left)
+		if err := bst.updateChild(n.Parent, n.Value, n.Left); err != nil {
+			return err
+		}
 	}
 
 	if bst.hasRightOnly(n) {
-		bst.updateChild(n.Parent, n.Value, n.Right)
+		if err := bst.updateChild(n.Parent, n.Value, n.Right); err != nil {
+			return err
+		}
 	}
 
 	if bst.hasBothChildren(n) {
@@ -134,7 +140,9 @@ func (bst *BinarySearchTree[T]) Remove(v T) error {
 		succ.Left = n.Left
 		succ.Right = n.Right
 
-		bst.updateChild(n.Parent, n.Value, succ)
+		if err := bst.updateChild(n.Parent, n.Value, succ); err != nil {
+			return err
+		}
 	}
 
 	return nil
@@ -160,7 +168,15 @@ func (bst *BinarySearchTree[T]) hasChild(n *Node[T]) bool {
 	return bst.hasLeftOnly(n) || bst.hasRightOnly(n)
 }
 
-func (bst *BinarySearchTree[T]) updateChild(n *Node[T], v T, c *Node[T]) {
+// updateChild takes a node, n and attempts to update one or both of its child nodes with c based on
+// comparing one or both of the child nodes with a value, v. If the node has no children this function
+// returns an error.
+func (bst *BinarySearchTree[T]) updateChild(n *Node[T], v T, c *Node[T]) error {
+
+	if bst.hasNoChildren(n) {
+		return errors.New("node has no children")
+	}
+
 	if n.Left != nil {
 		if bst.isEqual(n.Left.Value, v) {
 			n.Left = c
@@ -172,6 +188,8 @@ func (bst *BinarySearchTree[T]) updateChild(n *Node[T], v T, c *Node[T]) {
 			n.Right = c
 		}
 	}
+
+	return nil
 }
 
 func (bst *BinarySearchTree[T]) findInOrderSuccessorD(n *Node[T]) *Node[T] {
