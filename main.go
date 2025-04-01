@@ -7,13 +7,24 @@ import (
 
 func main() {
 
-	arr0 := []int{5, 3, 8, 4, 2}
-	sorting.BubbleSort(arr0)
-	fmt.Printf("final arr = %v \n\n\n", arr0)
+	arr := []int{5, 3, 8, 4, 2}
+	/*
+		fmt.Println("** Bubble Sort: ")
+		sorting.BubbleSort(arr)
+		fmt.Printf("final arr = %v \n\n\n", arr)
 
-	arr1 := []int{5, 3, 8, 4, 2}
-	sorting.SelectionSort(arr1)
-	fmt.Printf("final arr = %v \n\n\n", arr1)
+		fmt.Println("** Selection Sort: ")
+		sorting.SelectionSort(arr)
+		fmt.Printf("final arr = %v \n\n\n", arr)
+
+		fmt.Println("** Insertion Sort: ")
+		sorting.InsertionSort(arr)
+		fmt.Printf("final arr = %v \n\n\n", arr)
+	*/
+
+	fmt.Println("** Merge Sort: ")
+	res := sorting.MergeSort(arr)
+	fmt.Printf("final arr = %v \n\n\n", res)
 
 	//dll := doublelinkedlist.DoubleLinkedList[int]{}
 	//dll.Add(1)
