@@ -20,10 +20,17 @@ func main() {
 		fmt.Println("** Insertion Sort: ")
 		sorting.InsertionSort(arr)
 		fmt.Printf("final arr = %v \n\n\n", arr)
+
+		fmt.Println("** Merge Sort: ")
+		res := sorting.MergeSort(arr)
+		fmt.Printf("final arr = %v \n\n\n", res)
+
+		fmt.Println("** Merge Sort in place: ")
+		sorting.MergeSortInPlace(arr)
 	*/
 
-	fmt.Println("** Merge Sort: ")
-	res := sorting.MergeSort(arr)
+	fmt.Println("** Quick Sort: ")
+	res := sorting.QuickSort(arr)
 	fmt.Printf("final arr = %v \n\n\n", res)
 
 	//dll := doublelinkedlist.DoubleLinkedList[int]{}

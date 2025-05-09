@@ -1,0 +1,63 @@
+package sorting
+
+import "fmt"
+
+func QuickSort(arr []int) []int {
+	fmt.Printf("init: %v \n\n", arr)
+
+	if len(arr) <= 1 {
+		return arr
+	}
+
+	pivotIdx := len(arr) / 2
+	pivot := arr[pivotIdx]
+
+	fmt.Printf("pivotIdx: %d, pivot = %d \n\n", pivotIdx, pivot)
+
+	newArr := make([]int, len(arr))
+
+	idxBeforePivot := 0
+	newPivotIdx := 0
+	idxAfterPivot := len(arr) - 1
+
+	for i := 0; i < len(arr); i++ {
+		vi := arr[i]
+
+		if vi == pivot {
+			continue
+		}
+
+		if vi <= pivot {
+			newArr[idxBeforePivot] = vi
+
+			idxBeforePivot++
+			newPivotIdx++
+		} else {
+			newArr[idxAfterPivot] = vi
+			idxAfterPivot--
+		}
+
+		fmt.Printf("newArr = %v, idxBeforePivot = %d, idxAfterPivot = %d, newPivotIdx = %d \n", newArr, idxBeforePivot, idxAfterPivot, newPivotIdx)
+	}
+
+	newArr[newPivotIdx] = pivot
+
+	fmt.Printf("newArr = %v, \n\n", newArr)
+
+	left := QuickSort(newArr[0:newPivotIdx])
+	right := QuickSort(newArr[newPivotIdx+1 : len(newArr)])
+
+	fmt.Printf("left = %v, pivot = %d, right = %v \n", left, pivot, right)
+
+	final := make([]int, len(newArr))
+	final = append(final, left...)
+	final = append(final, pivot)
+	final = append(final, right...)
+
+	fmt.Printf("final = %v \n", final)
+
+	return final
+}
+
+// 6/5 - there is a problem in the algorithm in terms of how we place values before and
+//       after pivot. This requires further analysis.
