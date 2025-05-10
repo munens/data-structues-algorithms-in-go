@@ -52,10 +52,7 @@ func QuickSort(arr []int) []int {
 
 	fmt.Printf("left = %v, pivot = %d, right = %v \n", left, pivot, right)
 
-	final := make([]int, len(newArr))
-	final = append(final, left...)
-	final = append(final, pivot)
-	final = append(final, right...)
+	final := append(append(left, pivot), right...)
 
 	fmt.Printf("final = %v \n", final)
 
