@@ -2,12 +2,12 @@ package main
 
 import (
 	"fmt"
-	"github.com/munens/data-structures-algorithms/sorting-algorithms"
+	quickSort "github.com/munens/data-structures-algorithms/sorting-algorithms/quick-sort"
 )
 
 func main() {
 
-	arr := []int{5, 3, 8, 4, 2}
+	arr := []int{5, 3, 8, 4, 2, 9, 5, 6, 7}
 	/*
 		fmt.Println("** Bubble Sort: ")
 		sorting.BubbleSort(arr)
@@ -22,16 +22,20 @@ func main() {
 		fmt.Printf("final arr = %v \n\n\n", arr)
 
 		fmt.Println("** Merge Sort: ")
-		res := sorting.MergeSort(arr)
+		res := mergeSort.MergeSort(arr)
 		fmt.Printf("final arr = %v \n\n\n", res)
 
 		fmt.Println("** Merge Sort in place: ")
-		sorting.MergeSortInPlace(arr)
+		mergeSort.MergeSortInPlace(arr)
+
+		fmt.Println("** Quick Sort: ")
+		res := quickSort.QuickSort(arr)
+		fmt.Printf("final arr = %v \n\n\n", res)
 	*/
 
-	fmt.Println("** Quick Sort: ")
-	res := sorting.QuickSort(arr)
-	fmt.Printf("final arr = %v \n\n\n", res)
+	fmt.Println("** Quick Sort in place: ")
+	quickSort.QuickSortInPlaceClaude(arr)
+	fmt.Printf("final arr = %v \n\n\n", arr)
 
 	//dll := doublelinkedlist.DoubleLinkedList[int]{}
 	//dll.Add(1)

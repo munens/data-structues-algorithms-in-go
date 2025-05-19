@@ -1,10 +1,6 @@
-package sorting
+package quickSort
 
 import "fmt"
-
-// []int{5, 3, 8, 4, 2}
-// []int{5, 3, 4, 2, /8}
-// []int{5, 3, 4, 2, /8}
 
 func QuickSort(arr []int) []int {
 	fmt.Printf("init: %v \n\n", arr)
@@ -62,5 +58,5 @@ func QuickSort(arr []int) []int {
 // 6/5 - there is a problem in the algorithm in terms of how we place values before and
 //       after pivot. This requires further analysis.
 // 6/8 - it turns out that the append function on line 56 and 58 was increasing the size of the array, newArr
-//       This is why the lenght and capacity kept increasing. Not sure why the append was doing this and when
+//       This is why the length and capacity kept increasing. Not sure why the append was doing this and when
 //       append does this sort of thing vs. when it doesnt. Need to find out
